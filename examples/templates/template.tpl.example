@@ -1,0 +1,10 @@
+Garland: {title}
+{title}
+
+Time: {time}
+Status: {status}
+Bulb: {bulb}
+Grafana dashbord: {grafana}
+
+---
+Sent by Garland.

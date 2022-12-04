@@ -1,0 +1,14 @@
+# Graphite bulb example.
+# Light on the bulb if no service updates happened for the last 3 hours.
+interval = 1h
+source = "graphite"
+host = "graphite.localdomain:80"
+period = 5m
+query = "movingMax(metrics.service.update, \"3h\")"
+condition = "== 0"
+template.on = "default"
+template.on.title = "No service updates for the last 3 hours."
+template.on.grafana = "http://grafana.localdomain/d/iBA9mmNnz/service"
+template.off = "default"
+template.off.title = "Service updates recovered."
+template.off.grafana = "http://grafana.localdomain/d/iBA9mmNnz/service"

@@ -1,0 +1,8 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: garland
+Source: https://github.com/vchimishuk/garland
+
+Files: *
+Copyright: 2022 Viacheslav Chimishuk <vchimishuk@yandex.ru>
+Author: Viacheslav Chimishuk <vchimishuk@yandex.ru>
+License: GPL-3+

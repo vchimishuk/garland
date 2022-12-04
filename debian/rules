@@ -1,0 +1,34 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+export DH_VERBOSE=1
+export DH_OPTIONS
+export DH_GOPKG := github.com/vchimishuk/garland
+
+BUILD_DIR := $(shell pwd)/obj
+
+%:
+	dh $@ --builddirectory=$(BUILD_DIR)
+
+override_dh_auto_clean:
+	dh_auto_clean
+	rm -f garland
+
+override_dh_auto_build:
+	GOPATH=$(BUILD_DIR) go build
+
+override_dh_auto_test:
+	echo skip
+
+override_dh_auto_install:
+	install -g 0 -o 0 -d debian/garland
+	install -g 0 -o 0 -d debian/garland/usr/bin
+	cp garland debian/garland/usr/bin
+	install -g 0 -o 0 -d debian/garland/etc/garland
+	install -g 0 -o 0 -d debian/garland/etc/garland/bulbs
+	install -g 0 -o 0 -d debian/garland/etc/garland/templates
+	install -g 0 -o 0 -d debian/garland/etc/garland/contacts
+	install -g 0 -o 0 -d debian/garland/lib/systemd/system
+	cp garland.service debian/garland/lib/systemd/system
+	install -g 0 -o 0 -d debian/garland/usr/share/doc/garland
+	cp -r examples debian/garland/usr/share/doc/garland

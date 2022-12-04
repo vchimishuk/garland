@@ -1,0 +1,4 @@
+github.com/vchimishuk/config v0.0.0-20221124223829-a4bae9203074 h1:QVxXWr8vMJxyGU9Rjis2D0h7BDEGk0DN46d6JEhoACY=
+github.com/vchimishuk/config v0.0.0-20221124223829-a4bae9203074/go.mod h1:4/fxN1V3/I1ujlZv5gf0KzQOv3/4nObqzqvkC4uf3X4=
+golang.org/x/exp v0.0.0-20221114191408-850992195362 h1:NoHlPRbyl1VFI6FjwHtPQCN7wAMXI6cKcqrmXhOOfBQ=
+golang.org/x/exp v0.0.0-20221114191408-850992195362/go.mod h1:CxIveKay+FTh1D0yPZemJVgC/95VzuuOLq5Qi4xnoYc=

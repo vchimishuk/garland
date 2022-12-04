@@ -1,0 +1,12 @@
+[Unit]
+Description=Garland is a simple monitoring tool for home labs
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/garland
+Restart=always
+User=daemon
+Group=daemon
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,7 @@
+# Example contact example.
+type = "email"
+from = "Garland <no-reply@mail.local>"
+to = "Contact Name <contact-name@mail.local>"
+host = "mail.localdomain:25"
+user = "contact-name@mail.local"
+pass = "password-phrase"

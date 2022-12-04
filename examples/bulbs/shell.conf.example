@@ -1,0 +1,7 @@
+# Shell bulb example.
+# Light on the bulb if file appears to exist on disk.
+interval = 1h
+source = "shell"
+command = "[ -f /tmp/error.marker ]; echo $?"
+condition = "== 0"
+template.on = "error"
