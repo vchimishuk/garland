@@ -258,14 +258,13 @@ func notifier(contacts []contact.Contact, tpls []*Template) {
 			}
 		}
 
-		for i := 0; i < len(defered) && len(defered) > 0; {
-			d := defered[1]
+		for i := 0; i < len(defered); {
+			d := defered[i]
 			if d.Time.Add(d.Delay).After(time.Now()) {
 				i++
 				continue
 			}
 
-			defered = defered[1:]
 			sent, err := notify(d.Notice, d.Contact, tpls)
 			if err != nil {
 				d.Delay = incDeferTime(d.Delay)
