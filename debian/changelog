@@ -1,3 +1,9 @@
+garland (0.1.1) stable; urgency=low
+
+  * Fix panic when trying to notify a client.
+
+ -- Viacheslav Chimishuk <vchimishuk@yandex.ru>  Sat, 10 Dec 2022 21:42:00 +0200
+
 garland (0.1.0) stable; urgency=low
 
   * Initial Release.
