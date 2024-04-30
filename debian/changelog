@@ -1,3 +1,9 @@
+garland (0.2.0) stable; urgency=low
+
+  * Fix bug when bulb is not lighten on when source cannot be reached.
+
+ -- Viacheslav Chimishuk <vchimishuk@yandex.ru>  Wed, 30 Apr 2024 23:08:00 +0300
+
 garland (0.1.1) stable; urgency=low
 
   * Fix panic when trying to notify a client.
