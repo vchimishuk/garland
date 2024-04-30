@@ -66,39 +66,40 @@ func monitor(b *Bulb) {
 	st := false
 	nerr := 0
 	for {
-		select {
-		case _ = <-t.C:
-			log.Printf("Checking %s.", b.Name)
-			v, n, err := b.Source.Value()
-			if err != nil {
-				log.Printf("Failed to get %s's value: %s",
-					b.Source.Name(), err)
-				t.Reset(time.Minute)
-				nerr++
-			} else {
-				if n {
-					log.Printf("%s's value is null.",
-						b.Name)
-				} else {
-					log.Printf("%s's value is %f.",
-						b.Name, v)
-				}
-				s := b.Condition.Eval(v, n)
-				if s != st {
-					log.Printf("%s goes %s.",
-						b.Name, state(s))
-					Notifications <- &Notice{
-						Bulb:  b,
-						State: s,
-						Value: v,
-					}
-				}
-				st = s
+		<-t.C
+		log.Printf("Checking %s.", b.Name)
 
-				if nerr != 0 {
-					t.Reset(b.Interval)
-					nerr = 0
-				}
+		nst := st
+		v, n, err := b.Source.Value()
+		if err != nil {
+			log.Printf("Failed to get %s's value: %s",
+				b.Source.Name(), err)
+			t.Reset(time.Minute)
+			nerr++
+			if nerr >= 3 {
+				nst = false
+			}
+		} else {
+			nerr = 0
+			t.Reset(b.Interval)
+
+			if n {
+				log.Printf("%s's value is null.",
+					b.Name)
+			} else {
+				log.Printf("%s's value is %f.",
+					b.Name, v)
+			}
+			nst = b.Condition.Eval(v, n)
+		}
+
+		if nst != st {
+			st = nst
+			log.Printf("%s goes %s.", b.Name, state(st))
+			Notifications <- &Notice{
+				Bulb:  b,
+				State: st,
+				Value: v,
 			}
 		}
 	}
